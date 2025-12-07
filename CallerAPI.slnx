@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Caller/">
+    <Project Path="CallerApi.Infra/CallerApi.Infra.csproj" Id="d7aec7e1-a969-467d-a73e-631e732011f3" />
+    <Project Path="CallerAPI/CallerAPI.csproj" />
+    <Project Path="CalllerApi.Core/CalllerApi.Core.csproj" Id="617ea270-7378-4caa-9f93-1b51c7e5a9f4" />
+  </Folder>
+  <Folder Name="/Calling/">
+    <Project Path="CallingApi.Core/CallingApi.Core.csproj" Id="b2e48fe0-cd3e-4c06-be38-538f4c002818" />
+    <Project Path="CallingApi.Infra/CallingApi.Infra.csproj" Id="abfb2d38-2bcd-4a7e-8662-7f98d8d62d25" />
+    <Project Path="CallingWebapi/CallingWebapi.csproj" />
+  </Folder>
+</Solution>
