@@ -1,0 +1,6 @@
+services:
+  callerapi:
+    image: ${DOCKER_REGISTRY-}callerapi
+    build:
+      context: .
+      dockerfile: CallerAPI/Dockerfile

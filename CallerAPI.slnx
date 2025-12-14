@@ -9,4 +9,7 @@
     <Project Path="CallingApi.Infra/CallingApi.Infra.csproj" Id="abfb2d38-2bcd-4a7e-8662-7f98d8d62d25" />
     <Project Path="CallingWebapi/CallingWebapi.csproj" />
   </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
