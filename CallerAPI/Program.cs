@@ -48,4 +48,8 @@ app.MapGet("/weatherforecast", () =>
     .ToArray();
 });
 
+app.MapGet("sample", ()=> "This is a sample endpoint") ;
+
+app.MapGet("sample2", () => "This is a sample2 endpoint");
+
 app.Run();
