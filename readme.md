@@ -73,6 +73,6 @@ Docker checks your host CPU/OS and pulls the matching variant automatically.
  - If your machine is arm64 → it pulls the arm64 image.
 It creates two images under one tag. The tag points to a manifest that chooses the right image for the platform.
 
-# Refernces
+# References
 - [Docker Buildx documentation](https://docs.docker.com/build/concepts/overview/)
 - [Multistage docker files](https://tecadmin.net/dotnet-core-multi-stage-dockerfile/)
