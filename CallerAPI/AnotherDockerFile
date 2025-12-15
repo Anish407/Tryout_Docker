@@ -1,0 +1,37 @@
+
+# Stage 1: Build environment
+FROM mcr.microsoft.com/dotnet/sdk:10.0  AS build
+WORKDIR /src
+
+# Copy csproj and restore dependencies
+COPY *.csproj ./    #bad idea, since it copies all csproj files in the directory
+RUN dotnet restore
+
+# Copy the rest of the code
+COPY . ./
+RUN dotnet build -c Release --no-restore
+
+# Publish the app
+RUN dotnet publish -c Release -o /app --no-restore
+
+# Stage 2: Runtime environment
+FROM mcr.microsoft.com/dotnet/aspnet:10.0  AS runtime
+WORKDIR /app
+
+# Add a non-root user for security
+RUN useradd -m -r -u 1000 appuser
+
+# Copy the published files
+COPY --from=build /app ./
+
+# Set ownership
+RUN chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose the port
+EXPOSE 8080
+
+# Set the entry point
+ENTRYPOINT ["dotnet", "CallerAPI.dll"]
