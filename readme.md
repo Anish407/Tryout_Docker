@@ -1,4 +1,4 @@
-# Docker Build Overview
+ï»¿# Docker Build Overview
 
 Docker Build implements a client-server architecture, where:
 
@@ -35,17 +35,18 @@ docker build -t myapp:latest .
 - Docker CLI sends a build request to the Docker engine.
 - You typically get a single-platform image loaded into your local Docker image store.
 
-Simple mental model: “Docker CLI asks the local Docker engine to build; engine uses BuildKit (kitchen) if enabled
+Simple mental model: â€œDocker CLI asks the local Docker engine to build; engine uses BuildKit (kitchen) if enabled
 
 ## Multi-platform build (the big reason people use Buildx)
 
-```docker buildx build --platform linux/amd64,linux/arm64 -t myapp:latest --push .
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t myapp:latest --push .
 ```
 What happens:
 
-- Buildx tells BuildKit: “Build for amd64 and arm64.”
+- Buildx tells BuildKit: â€œBuild for amd64 and arm64.â€
 - BuildKit builds separate images and produces a multi-arch manifest.
-- --push is required because a multi-arch result usually can’t be “loaded” into the classic local image store as one thing.
+- --push is required because a multi-arch result usually canâ€™t be â€œloadedâ€ into the classic local image store as one thing.
 
 That command builds two separate images, one for linux/amd64 and one for linux/arm64, then publishes them under one tag (myrepo/myapp:1.0) using a multi-arch manifest.
 
@@ -58,9 +59,9 @@ Buildx tells BuildKit to build for two platforms
 BuildKit produces two outputs
    - Image A: contains amd64 binaries + layers
    - Image B: contains arm64 binaries + layers
-   - --push uploads both images AND a “manifest list”
+   - --push uploads both images AND a â€œmanifest listâ€
 
-The manifest is like an index: “this tag has two variants; pick the one matching the client machine.”
+The manifest is like an index: â€œthis tag has two variants; pick the one matching the client machine.â€
 At runtime, the correct one is auto-selected
 
 ### When you do:
@@ -68,8 +69,8 @@ At runtime, the correct one is auto-selected
 docker pull myrepo/myapp:1.0
 
 Docker checks your host CPU/OS and pulls the matching variant automatically.
- - If your machine is amd64 ? it pulls the amd64 image.
- - If your machine is arm64 ? it pulls the arm64 image.
+ - If your machine is amd64 â†’ it pulls the amd64 image.
+ - If your machine is arm64 â†’ it pulls the arm64 image.
 It creates two images under one tag. The tag points to a manifest that chooses the right image for the platform.
 
 # Refernces
